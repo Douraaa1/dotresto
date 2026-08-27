@@ -14,9 +14,9 @@ Par défaut, l'application est en **français** (anglais disponible), la devise 
 
 ```
 dotresto/
-├── backend/restropro-saas-backend-main/    # API Express (port 3000)
-├── frontend/restropro-saas-frontend-main/  # App React/Vite (port 5173)
-└── restropro_saas.sql                      # Schéma complet de la base de données
+├── backend/dotresto-backend/    # API Express (port 3000)
+├── frontend/dotresto-frontend/  # App React/Vite (port 5173)
+└── dotresto.sql                      # Schéma complet de la base de données
 ```
 
 ## 1. Cloner le dépôt
@@ -32,13 +32,13 @@ Créez la base et importez le schéma (vide, sans données) :
 
 ```bash
 mysql -u root -p -e "CREATE DATABASE dotresto CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;"
-mysql -u root -p dotresto < restropro_saas.sql
+mysql -u root -p dotresto < dotresto.sql
 ```
 
 ## 3. Backend
 
 ```bash
-cd backend/restropro-saas-backend-main
+cd backend/dotresto-backend
 npm install
 cp .env.example .env
 ```
@@ -68,7 +68,7 @@ L'API tourne sur `http://localhost:3000`.
 ## 4. Frontend
 
 ```bash
-cd frontend/restropro-saas-frontend-main
+cd frontend/dotresto-frontend
 npm install
 npm run dev
 ```
@@ -99,7 +99,7 @@ UPDATE tenants SET is_active = 1, payment_gateway_product_id = 'local-dev-plan' 
 Il n'existe pas d'inscription libre-service pour le rôle superadmin — il faut l'insérer directement en base avec un mot de passe hashé :
 
 ```bash
-cd backend/restropro-saas-backend-main
+cd backend/dotresto-backend
 node -e "require('bcrypt').hash('VOTRE_MOT_DE_PASSE', 10).then(console.log)"
 ```
 
@@ -112,11 +112,11 @@ Connexion sur `http://localhost:5173/superadmin/login`.
 
 ## Scripts disponibles
 
-**Backend** (`backend/restropro-saas-backend-main`)
+**Backend** (`backend/dotresto-backend`)
 - `npm run dev` — démarre avec nodemon (rechargement automatique)
 - `npm start` — démarre en mode production
 
-**Frontend** (`frontend/restropro-saas-frontend-main`)
+**Frontend** (`frontend/dotresto-frontend`)
 - `npm run dev` — serveur de développement Vite
 - `npm run build` — build de production
 - `npm run preview` — prévisualise le build de production
